@@ -8,7 +8,7 @@ class ProductManager {
   }
 
   readData(){
-    const data = JSON.parse(fs.readFileSync(`./${this.path}`, 'utf-8'));
+    const data = JSON.parse(fs.readFileSync(`./${this.path}`, "utf-8"));
     return data;
   }
   writeData(data){
@@ -31,6 +31,7 @@ class ProductManager {
  getAllProduct(){
     let data = this.readData();
     console.log(data);
+    return data;
  }
 
  addProduct(product){
@@ -57,6 +58,7 @@ class ProductManager {
     return getProduct;
   }else{ // sacar este else
       console.log("No se encontro el ID del producto")
+      return({error: "El producto con ID:" + id + " no existe"})
   }
   }
 
@@ -87,34 +89,40 @@ updateProduct(id, product){
 }
 
 const productManager = new ProductManager("db.json");
-/*
-let product4 = {
-    title: "Camioneta", 
-    description: "Fiat", 
-    price: 8190000,
-    code: "FIAT_TORO2022",
-    thumbnail: "url://stockimg/net/f_Toro1234.png",
-    stock: 20,
-};
 
+/*
+let product2 = {
+    title: "Auto", 
+    description: "TOYOTA", 
+    price: 4010000,
+    code: "TOYOTA_COROLLA",
+    thumbnail: "url://stockimg/net/T_Co1234.png",
+    stock: 35,
+};
 */
 
-// productManager.addProduct(product4);
+
+ //productManager.addProduct(product2);
 
 /*
-productManager.updateProduct(3, {
-  title: "Auto", 
-  description: "Fiat", 
+productManager.updateProduct(2, {
+  title: "SUV", 
+  description: "Jeep", 
   price: 1199999,
-  code: "FIAT9999",
-  thumbnail: "url://stockimg/net/f1234.png",
-  stock: 20,
+  code: "Jeep_Renegade",
+  thumbnail: "url://stockimg/net/J_Re1234.png",
+  stock: 17,
 });
 */
 
 //productManager.getProductById(3);
 
 //productManager.deleteProduct(2);
+
+//productManager.getAllProduct();
+
+
+
 
 module.exports = {
   productManager
